@@ -1,28 +1,29 @@
 package com.example.mteinstallbuddy
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.mteinstallbuddy.screens.CreateInstallScreen
-import com.example.mteinstallbuddy.screens.DashboardScreen
-import com.example.mteinstallbuddy.screens.HelpScreen
-import com.example.mteinstallbuddy.screens.InstallDetailScreen
-import com.example.mteinstallbuddy.screens.MainMenuScreen
-import com.example.mteinstallbuddy.screens.PreferencesScreen
+import com.example.mteinstallbuddy.screens.*
 import com.example.mteinstallbuddy.ui.theme.MTEInstallBuddyTheme
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MTEInstallBuddyTheme {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = Screen.Menu.route) {
+                NavHost(navController, startDestination = "splash") {
+                    composable("splash") {
+                        SplashScreen(navController)
+                    }
                     composable(Screen.Menu.route) {
                         MainMenuScreen(navController)
                     }

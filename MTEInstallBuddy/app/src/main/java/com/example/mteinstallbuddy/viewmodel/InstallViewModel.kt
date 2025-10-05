@@ -1,6 +1,7 @@
 package com.example.mteinstallbuddy.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import kotlinx.coroutines.launch
 
 class InstallViewModel(application: Application) : AndroidViewModel(application) {
     private val dao = AppDatabase.getDatabase(application).installSheetDao()
+    private val prefs = application.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
     val installs: StateFlow<List<InstallSheet>> =
         dao.getAll().stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
@@ -29,7 +31,17 @@ class InstallViewModel(application: Application) : AndroidViewModel(application)
 
     fun saveInstall(sheet: InstallSheet) {
         viewModelScope.launch {
-            dao.insert(sheet)
+            val autoTimestamp = prefs.getBoolean("autoTimestamp", true)
+            val technicianName = prefs.getString("technicianName", "") ?: ""
+            val defaultType = prefs.getString("defaultInstallType", "Standard") ?: "Standard"
+
+            val finalSheet = sheet.copy(
+                timestamp = if (autoTimestamp) System.currentTimeMillis() else sheet.timestamp,
+                technician = sheet.technician.ifBlank { technicianName },
+                type = sheet.type.ifBlank { defaultType }
+            )
+
+            dao.insert(finalSheet)
         }
     }
 }

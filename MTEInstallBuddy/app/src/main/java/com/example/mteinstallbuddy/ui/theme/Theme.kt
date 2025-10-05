@@ -1,13 +1,12 @@
 package com.example.mteinstallbuddy.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
-import androidx.compose.material3.Typography
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-
+import androidx.compose.ui.unit.sp
 
 private val MeyerLightColors = lightColorScheme(
     primary = MeyerBlue,
@@ -15,7 +14,9 @@ private val MeyerLightColors = lightColorScheme(
     secondary = MeyerNavy,
     onSecondary = MeyerWhite,
     background = MeyerBackground,
-    surface = MeyerWhite
+    onBackground = MeyerBlack,
+    surface = MeyerWhite,
+    onSurface = MeyerBlack
 )
 
 private val MeyerShapes = Shapes(
@@ -26,7 +27,11 @@ private val MeyerShapes = Shapes(
     extraLarge = RoundedCornerShape(24.dp)
 )
 
-private val MeyerTypography = Typography()
+private val MeyerTypography = Typography(
+    titleLarge = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold),
+    bodyMedium = TextStyle(fontSize = 16.sp),
+    labelLarge = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold)
+)
 
 @Composable
 fun MTEInstallBuddyTheme(content: @Composable () -> Unit) {
