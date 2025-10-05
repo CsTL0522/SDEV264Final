@@ -4,10 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavType
-import androidx.navigation.compose.*
-import com.example.mteinstallbuddy.screens.*
-import com.example.mteinstallbuddy.ui.theme.MTEInstallBuddyTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.mteinstallbuddy.screens.CreateInstallScreen
+import com.example.mteinstallbuddy.screens.DashboardScreen
+import com.example.mteinstallbuddy.screens.HelpScreen
+import com.example.mteinstallbuddy.screens.InstallDetailScreen
+import com.example.mteinstallbuddy.screens.MainMenuScreen
+import com.example.mteinstallbuddy.screens.PreferencesScreen
+import com.example.mteinstallbuddy.ui.theme.MTEInstallBuddyTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

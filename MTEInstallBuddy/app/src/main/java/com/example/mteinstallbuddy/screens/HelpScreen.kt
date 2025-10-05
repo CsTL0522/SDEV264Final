@@ -1,8 +1,20 @@
 package com.example.mteinstallbuddy.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DividerDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,8 +24,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.mteinstallbuddy.R
-import com.example.mteinstallbuddy.components.BackToMenuButton
+import com.example.mteinstallbuddy.component.BackToMenuButton
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HelpScreen(navController: NavHostController) {
     Scaffold(
@@ -44,7 +57,7 @@ fun HelpScreen(navController: NavHostController) {
                 textAlign = TextAlign.Center
             )
 
-            Divider()
+            HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
 
             Text(
                 text = "Need help using the app?\n\n• Tap 'Create Install Sheet' to start a new entry.\n• Use 'Dashboard' to view saved sheets.\n• Attach photos during install entry.\n\nFor support, contact:\nsupport@meyertruckequipment.com\n(812) 867-3901",

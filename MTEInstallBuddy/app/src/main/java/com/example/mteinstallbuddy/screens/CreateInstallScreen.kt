@@ -1,15 +1,32 @@
 package com.example.mteinstallbuddy.screens
 
 import android.app.Application
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.mteinstallbuddy.components.BackToMenuButton
+import com.example.mteinstallbuddy.component.BackToMenuButton
 import com.example.mteinstallbuddy.viewmodel.InstallViewModel
 import com.example.mteinstallbuddy.viewmodel.InstallViewModelFactory
 
@@ -48,7 +65,7 @@ fun CreateInstallScreen(navController: NavHostController) {
                     value = selectedMake,
                     onValueChange = { selectedMake = it },
                     label = { Text("Make") },
-                    modifier = Modifier.menuAnchor()
+                    modifier = Modifier.fillMaxWidth()
                 )
                 ExposedDropdownMenu(
                     expanded = showMakeDropdown,
@@ -75,7 +92,7 @@ fun CreateInstallScreen(navController: NavHostController) {
                     value = selectedModel,
                     onValueChange = { selectedModel = it },
                     label = { Text("Model") },
-                    modifier = Modifier.menuAnchor()
+                    modifier = Modifier.fillMaxWidth()
                 )
                 ExposedDropdownMenu(
                     expanded = showModelDropdown,
@@ -102,7 +119,7 @@ fun CreateInstallScreen(navController: NavHostController) {
                     value = selectedType,
                     onValueChange = { selectedType = it },
                     label = { Text("Type") },
-                    modifier = Modifier.menuAnchor()
+                    modifier = Modifier.fillMaxWidth()
                 )
                 ExposedDropdownMenu(
                     expanded = showTypeDropdown,
