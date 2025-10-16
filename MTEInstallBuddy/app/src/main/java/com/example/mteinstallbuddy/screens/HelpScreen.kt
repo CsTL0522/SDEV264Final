@@ -1,13 +1,9 @@
 package com.example.mteinstallbuddy.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -34,10 +30,13 @@ fun HelpScreen(navController: NavHostController) {
             TopAppBar(title = { Text("Help & Support") })
         }
     ) { padding ->
+        val scrollState = rememberScrollState()
+
         Column(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
+                .verticalScroll(scrollState)
                 .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -60,12 +59,30 @@ fun HelpScreen(navController: NavHostController) {
             HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
 
             Text(
-                text = "Need help using the app?\n\n• Tap 'Create Install Sheet' to start a new entry.\n• Use 'Dashboard' to view saved sheets.\n• Attach photos during install entry.\n\nFor support, contact:\nsupport@meyertruckequipment.com\n(812) 867-3901",
+                text = """
+                    This app is designed with the builder in mind. To streamline the install process,
+                    it allows each installer to document and read installs of varying equipment to assist in the
+                    quality and repetition of Meyer as a whole across its varying locations.
+
+                    Need help using the app?
+
+                    • Tap 'Create Install Sheet' to start a new entry.
+                    • Use 'Dashboard' to view saved sheets.
+                    • Attach photos during install entry.
+                    • Use 'Preferences' to customize your experience:
+                      - Set default install types and truck models.
+                      - Enable photo reminders during sheet creation.
+                      - Choose your preferred sort order for saved sheets.
+
+                    For support, contact:
+                    support@meyertruckequipment.com
+                    (812) 867-3901
+                """.trimIndent(),
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Start
             )
 
-            Spacer(Modifier.weight(1f))
+            Spacer(Modifier.height(24.dp))
 
             BackToMenuButton(navController)
         }

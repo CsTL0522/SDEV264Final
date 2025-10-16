@@ -45,10 +45,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.mteinstallbuddy.R
 import com.example.mteinstallbuddy.component.BackToMenuButton
+import com.example.mteinstallbuddy.ui.theme.InstallFieldColors
 import com.example.mteinstallbuddy.ui.theme.MTEInstallBuddyTheme
 import com.example.mteinstallbuddy.viewmodel.InstallViewModel
 import com.example.mteinstallbuddy.viewmodel.InstallViewModelFactory
 import java.time.LocalDate
+import androidx.compose.material3.OutlinedTextFieldDefaults
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -109,8 +111,9 @@ fun CreateInstallScreen(navController: NavHostController) {
                             value = technicianName,
                             onValueChange = { technicianName = it },
                             label = { Text("Technician Name") },
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = InstallFieldColors
+                            )
                         Spacer(Modifier.height(16.dp))
 
                         ExposedDropdownMenuBox(
@@ -121,7 +124,8 @@ fun CreateInstallScreen(navController: NavHostController) {
                                 value = selectedMake,
                                 onValueChange = { selectedMake = it },
                                 label = { Text("Make") },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = InstallFieldColors
                             )
                             ExposedDropdownMenu(
                                 expanded = showMakeDropdown,
@@ -149,7 +153,8 @@ fun CreateInstallScreen(navController: NavHostController) {
                                 value = selectedModel,
                                 onValueChange = { selectedModel = it },
                                 label = { Text("Model") },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = InstallFieldColors
                             )
                             ExposedDropdownMenu(
                                 expanded = showModelDropdown,
@@ -177,7 +182,8 @@ fun CreateInstallScreen(navController: NavHostController) {
                                 value = selectedType,
                                 onValueChange = { selectedType = it },
                                 label = { Text("Type") },
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = InstallFieldColors
                             )
                             ExposedDropdownMenu(
                                 expanded = showTypeDropdown,

@@ -7,6 +7,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.OutlinedTextFieldDefaults
 
 private val MeyerLightColors = lightColorScheme(
     primary = MeyerBlue,
@@ -32,6 +36,19 @@ private val MeyerTypography = Typography(
     bodyMedium = TextStyle(fontSize = 16.sp),
     labelLarge = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold)
 )
+
+val InstallFieldColors
+    @Composable get() = OutlinedTextFieldDefaults.colors(
+        focusedContainerColor = MaterialTheme.colorScheme.surface,
+        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+        focusedBorderColor = MaterialTheme.colorScheme.primary,
+        unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+        cursorColor = MaterialTheme.colorScheme.primary
+    )
+
+
 
 @Composable
 fun MTEInstallBuddyTheme(content: @Composable () -> Unit) {
